@@ -1,0 +1,19 @@
+{{ if or .Paginator.HasPrev .Paginator.HasNext }}
+
+<div class="flex justify-center">
+    {{ if .Paginator.HasPrev }}
+        <a class="icon pages-icon text-3xl py-2 px-5 text-accent dark:text-sky-400" href="{{ .Paginator.Prev.URL }}" rel="prev">
+            <i class="mr-3 fa fa-arrow-left"></i> Previous
+        </a>
+    {{ end }}
+
+
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") }}
+    {{ if .Paginator.HasNext }}
+        <a class="icon pages-icon text-3xl py-2 px-5 text-accent dark:text-sky-400 border-gray-400" href="{{ .Paginator.Next.URL }}" rel="next">
+            Next <i class="ml-3 fa fa-arrow-right"></i>
+        </a>
+    {{ end }}
+</div>
+
+{{ end }}

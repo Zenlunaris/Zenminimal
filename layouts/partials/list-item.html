@@ -1,0 +1,31 @@
+<div class="article-item w-full flex text-gray-700 dark:border-gray-700 my-8 hover:border hover:border-gray-400">
+    {{ $.Scratch.Set "link" .RelPermalink }}
+    {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") | $.Scratch.Set "date" }}
+    <div class="block w-full article-left-border dark:article-left-border article-right-border dark:article-right-border">
+        <div>
+            <a href="#" class="text-md font-medium text-gray-700 hover:text-gray-900 dark:hover:text-white dark:text-sky-400">
+                <span class="dark:text-sky-400 font-bold">
+                    >_ {{ $.Scratch.Get "date" }}@{{ .Params.author | default .Site.Params.author }}:
+                </span>
+            </a>
+        </div>
+        <div>
+            <a href="{{ .Scratch.Get "link" }}" class="article-title text-2xl font-medium text-accent dark:text-lime-400 hover:underline inline-block">
+                {{ .Title }}          
+            </a>
+            {{ if .Params.subTitle }}
+                <span class="block ml-6 dark:text-sky-400 font-bold">&#8618; {{ .Params.subTitle }}</span>
+            {{ end }}  
+            <div class="grid grid-cols-2 gap-4 content-between">
+                
+                    <span class="non-margin dark:text-amber-400 uppercase">  
+                        {{ if .Params.tags }}<i class="fa-solid fa-tags"></i> {{ partial "tags" . }} {{ end }} 
+                    </span>
+                  
+                <div class="block w-full">
+                    <a href="{{ .Scratch.Get "link" }}" class="block w-full text-right dark:text-sky-400 text-sm"><i class="fa-solid fa-square-plus"></i> {{ T "read_more" }} <i class="fab fa-arrow-alt-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

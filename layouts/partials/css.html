@@ -1,0 +1,33 @@
+<style>
+
+    html body {
+        font-family: '{{ .Site.Params.font }}', sans-serif;
+    }
+
+    :root {
+        --accent: {{ .Site.Params.accent | default "#2196F3" }};
+        --border-width: {{ if .Site.Params.showBorder | default false }} 5px {{ else }} 0 {{ end }};
+    }
+
+</style>
+
+<!-- MAIN -->
+<link rel="stylesheet" href="{{ "/css/main.css" | absURL }}">
+
+<!-- CUSTOM -->
+{{ range .Site.Params.css }} <link rel="stylesheet" href="{{ . | absURL }}"> {{ end }}
+
+<!-- GOOGLE FONT -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{ .Site.Params.font }}">
+
+<!-- FLOWBITE -->
+<link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+
+<!-- TAILWIND -->
+<link rel="stylesheet" href="https://cdn.tailwindcss.com/3.0.24">
+
+<!-- HIGHLIGHT -->
+{{ if .Site.Params.highlight | default false }} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/{{ .Site.Params.highlightStyle | default "default" }}.min.css"> {{ end }}
+
+<!-- FONT AWESOME 5 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />

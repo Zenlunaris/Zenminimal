@@ -1,0 +1,13 @@
+{{ partial "top" . }}
+
+<main>
+    <div class="intro ">
+        {{ $params := .Site.Params }}
+        {{ with .Site.Params.profilePic }} <img class="profile mx-auto {{ if $params.circleAvatar }} circle-avatar {{ else }} square-avatar {{ end }}" src="{{ . }}"> {{ end }}
+        <h1 class="text-center dark:text-sky-400">{{ .Site.Title }}</h1>
+        <h4 class="text-center dark:text-white">{{ markdownify .Site.Params.Description }}</h4>
+        {{ with .Content }} <div class="homepage-content text-justify">{{ . }}</div> {{ end }}
+    </div>
+</main>
+
+{{ partial "bottom" . }}
